@@ -1,0 +1,5 @@
+# No long-lived service-account keys. CI/CD uses Workload Identity Federation.
+name: projects/PROJECT_ID/policies/iam.disableServiceAccountKeyCreation
+spec:
+  rules:
+    - enforce: true

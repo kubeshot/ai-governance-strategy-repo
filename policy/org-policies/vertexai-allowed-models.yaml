@@ -1,0 +1,12 @@
+# Restrict which Model Garden / Gemini models can be used in the project.
+# Keep in sync with allowed_models in policy/governance-policy.yaml.
+# Verify the value format against Google's "Control access to Model Garden models"
+# documentation before applying — model IDs and suffixes change between releases.
+name: projects/PROJECT_ID/policies/vertexai.allowedModels
+spec:
+  rules:
+    - values:
+        allowedValues:
+          - publishers/google/models/gemini-2.5-flash
+          - publishers/google/models/gemini-2.5-flash-lite
+          - publishers/google/models/gemini-2.5-pro

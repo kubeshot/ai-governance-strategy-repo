@@ -1,0 +1,44 @@
+# Machine-readable Gemini governance policy.
+# Enforced at runtime by src/gemini_governance (GovernedGeminiClient).
+# Human-readable source: docs/03 and docs/04.
+
+version: 1
+
+risk_tiers:
+  low:
+    allowed_models:
+      - gemini-2.5-flash
+      - gemini-2.5-flash-lite
+      - gemini-2.5-pro
+    prompt_pii_action: redact        # redact | block | allow
+    output_pii_action: redact
+    safety_threshold: BLOCK_MEDIUM_AND_ABOVE
+    max_output_tokens: 4096
+    human_review_required: false
+
+  medium:
+    allowed_models:
+      - gemini-2.5-flash
+      - gemini-2.5-pro
+    prompt_pii_action: redact
+    output_pii_action: redact
+    safety_threshold: BLOCK_MEDIUM_AND_ABOVE
+    max_output_tokens: 2048
+    human_review_required: false
+
+  high:
+    allowed_models:
+      - gemini-2.5-pro                # pin an exact version in production
+    prompt_pii_action: block          # overridable per use case with allow_pii: true
+    output_pii_action: redact
+    safety_threshold: BLOCK_LOW_AND_ABOVE
+    max_output_tokens: 1024
+    human_review_required: true
+
+  prohibited:
+    allowed_models: []
+    prompt_pii_action: block
+    output_pii_action: block
+    safety_threshold: BLOCK_LOW_AND_ABOVE
+    max_output_tokens: 0
+    human_review_required: true

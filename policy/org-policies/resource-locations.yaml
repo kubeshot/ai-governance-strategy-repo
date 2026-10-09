@@ -1,0 +1,9 @@
+# Keep AI processing and storage in approved regions (data residency).
+# Adjust the value groups to your residency requirements.
+name: projects/PROJECT_ID/policies/gcp.resourceLocations
+spec:
+  rules:
+    - values:
+        allowedValues:
+          - in:northamerica-northeast1-locations
+          - in:us-central1-locations

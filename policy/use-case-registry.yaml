@@ -1,0 +1,36 @@
+# Registry of AI use cases. GovernedGeminiClient refuses any call whose
+# use_case_id is missing here or has approved: false.
+# Process: docs/04-risk-tiering-and-use-case-intake.md
+
+use_cases:
+  - id: internal-doc-drafting
+    description: Draft and rewrite internal documents from the author's own notes.
+    owner: enablement-team@example.com
+    risk_tier: low
+    data_classification: internal
+    approved: true
+    next_review: 2027-10-01
+
+  - id: support-ticket-summary
+    description: Summarise inbound support tickets for agents; agent reviews before replying.
+    owner: support-ops@example.com
+    risk_tier: medium
+    data_classification: confidential
+    approved: true
+    next_review: 2027-04-01
+
+  - id: claims-triage-assist
+    description: Suggest a triage category for insurance claims; adjuster makes the decision.
+    owner: claims-platform@example.com
+    risk_tier: high
+    data_classification: restricted
+    allow_pii: true                   # DPIA completed; Restricted data permitted
+    approved: true
+    next_review: 2027-01-15
+
+  - id: resume-auto-reject
+    description: Automatically reject job applicants without human review.
+    owner: talent@example.com
+    risk_tier: prohibited
+    data_classification: restricted
+    approved: false                   # prohibited: automated decisions about individuals

@@ -1,0 +1,8 @@
+# Only identities from the company's Cloud Identity / Workspace customer can be granted IAM roles.
+# Replace C0xxxxxxx with your directory customer ID (gcloud organizations list).
+name: projects/PROJECT_ID/policies/iam.allowedPolicyMemberDomains
+spec:
+  rules:
+    - values:
+        allowedValues:
+          - C0xxxxxxx
